@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <h:outputStylesheet name="css/form-style.css"/>
+        <h:outputScript name="js/grid.js"/>
+        <h:outputScript name="js/validation.js"/>
+        <title>Lab3</title>
+    </h:head>
+    <h:body>
+        <div class="header">
+            <div class="content">
+                <h1 class="header-label"><a href="index.xhtml">Go Back</a></h1>
+            </div>
+        </div>
+        <div>
+            <div id="content-canvas" class="content">
+            </div>
+        </div>
+        <div>
+            <div class="content">
+                <h3 id="error"></h3>
+                <h:form>
+                    <div class="column-holder">
+                        <div class="column">
+                            <p id="x-text">
+                                <h:outputLabel for="x-input">X (-5, 3):</h:outputLabel>
+                            </p>
+                            <h:inputText value="#{input.x}" id="x-input"/>
+                        </div>
+                        <div class="column">
+                            <p id="y-text">
+                                <h:outputLabel>Y:</h:outputLabel>
+                            </p>
+                            <ace:sliderEntry id="r-input" value="#{input.y}" stepPercent="0.1" min="-3" max="4">
+                            </ace:sliderEntry>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <h:outputLabel>R:</h:outputLabel>
+                        <h:selectBooleanCheckbox value="#{input.r1}" id="r-input-1" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:outputLabel for="r-input-1">1</h:outputLabel>
+                        <h:selectBooleanCheckbox value="#{input.r15}" id="r-input-15" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:outputLabel for="r-input-15">1.5</h:outputLabel>
+                        <h:selectBooleanCheckbox value="#{input.r2}" id="r-input-2" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:outputLabel for="r-input-2">2</h:outputLabel>
+                        <h:selectBooleanCheckbox value="#{input.r25}" id="r-input-25" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:outputLabel for="r-input-25">2.5</h:outputLabel>
+                        <h:selectBooleanCheckbox value="#{input.r3}" id="r-input-3" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:outputLabel for="r-input-3">3</h:outputLabel>
+                    </div>
+                    <div class="center">
+                        <h:commandButton action="#{input.submitted}" class="button" value="Отправить" type="submit"/>
+                        <h:commandButton class="button" value="Очистить" type="reset"/>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</f:view>
+</html>

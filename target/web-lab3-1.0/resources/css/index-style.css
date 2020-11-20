@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'main-font';
+    src: url('./../fonts/main-font.ttf.xhtml') format("opentype");
+}
+
+* {
+    font-family: 'main-font';
+}
+
+.head-label {
+    margin: 0px;
+    color: #696969;
+}
+
+#error {
+    text-align: center;
+    color: #FF0000;
+}
+
+body {
+    margin: 0px;
+}
+
+.content {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header {
+    background-color: #f8f6f6;
+}
+
+.header-label {
+    display: inline-block;
+    margin: 0px 0px;
+    padding: 3px;
+    color: #696969;
+    font-size: 30px;
+}
+
+.maininfo {
+    background-color: #353535;
+    color: #d6d5d5;
+    padding: 17px;
+}
+
+.content-header {
+    text-align: center;
+    margin: 0px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.to-form {
+    text-decoration: none;
+    font-size: 30px;
+    color: #696969;
+}
+
+.to-form:hover {
+    color: #101010;
+}

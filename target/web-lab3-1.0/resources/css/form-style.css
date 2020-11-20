@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'main-font';
+    src: url('./../fonts/main-font.ttf.xhtml') format("opentype");
+}
+
+* {
+    font-family: 'main-font';
+}
+
+#error {
+    text-align: center;
+    color: #FF0000;
+}
+
+body {
+    margin: 0px;
+    background-color: #f8f6f6;
+}
+
+.content {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-label {
+    display: inline-block;
+    margin: 0px 0px;
+    padding: 3px;
+    color: #696969;
+    font-size: 30px;
+}
+
+.header-label a {
+    text-decoration: none;
+    color: #696969;
+}
+
+.column-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.column-holder p {
+    margin: 0px;
+}
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.column {
+    margin: 10px;
+    width: 20%;
+}
+
+.x-input {
+    width: 100%;
+}
+
+.y-input {
+    width: 100%;
+}
+
+#y-text {
+    margin-bottom: 8.3px;
+}
+
+#x-text {
+    margin-bottom: 5px;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    color: #FFFFFF;
+    border: none;
+    background-color: #F6744B;
+    border-radius: 3px;
+    height: 36px;
+    font-size: 17px;
+}
+
+.button:hover {
+    background-color: #e64919;
+}
+
+#content-canvas {
+    margin: 0 auto;
+    width: 400px;
+}
