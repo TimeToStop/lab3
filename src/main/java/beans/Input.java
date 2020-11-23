@@ -1,26 +1,27 @@
 package beans;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
+@SessionScoped
 public class Input implements Serializable
 {
     private String x;
-    private String y;
+    private Integer y;
     private boolean r1;
     private boolean r15;
     private boolean r2;
     private boolean r25;
     private boolean r3;
 
-    public Input() {
-
+    public Input()
+    {
     }
 
     public void submitted() {
-        System.err.println("Submitted");
+        
     }
 
     public String getX() {
@@ -31,11 +32,11 @@ public class Input implements Serializable
         this.x = x;
     }
 
-    public String getY() {
+    public Integer getY() {
         return y;
     }
 
-    public void setY(String y) {
+    public void setY(Integer y) {
         this.y = y;
     }
 
