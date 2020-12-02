@@ -67,6 +67,18 @@
             <artifactId>javaee-web-api</artifactId>
             <version>8.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.24.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/ojdbc8.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <repositories>

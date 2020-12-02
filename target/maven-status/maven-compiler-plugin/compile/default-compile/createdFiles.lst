@@ -1,1 +1,11 @@
-beans\Input.class
+model/validation/ParserR.class
+web/RequestDispatcher.class
+model/HitManager.class
+model/validation/ParserX.class
+model/validation/ValidateException.class
+sql/OracleDB.class
+model/validation/ParserY.class
+model/validation/Parser.class
+web/Request.class
+model/Dot.class
+beans/Input.class

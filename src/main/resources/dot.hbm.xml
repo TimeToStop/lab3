@@ -1,0 +1,33 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="model">
+
+    <class name="Dot" table="HISTORY">
+        <id name="id" type="int" column="id" >
+            <generator class="assigned"/>
+        </id>
+
+        <property name="x" >
+            <column name="x"/>
+        </property>
+        <property name="y" >
+            <column name="y"/>
+        </property>
+        <property name="r" >
+            <column name="r"/>
+        </property>
+        <property name="result" >
+            <column name="hit_result"/>
+        </property>
+        <property name="executed">
+            <column name="execution_time"/>
+        </property>
+        <property name="time">
+            <column name="time_request"/>
+        </property>
+    </class>
+
+</hibernate-mapping>

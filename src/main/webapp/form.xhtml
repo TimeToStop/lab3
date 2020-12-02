@@ -37,7 +37,7 @@
                             <p id="y-text">
                                 <h:outputLabel>Y:</h:outputLabel>
                             </p>
-                            <ace:sliderEntry id="r-input" value="#{input.y}" min="-3" max="4">
+                            <ace:sliderEntry id="r-input" value="#{input.y}" min="-39" max="39">
                             </ace:sliderEntry>
                         </div>
                     </div>
@@ -59,6 +59,41 @@
                         <h:commandButton class="button" value="Очистить" type="reset"/>
                     </div>
                 </h:form>
+            </div>
+        </div>
+
+        <div>
+            <div class="content">
+                <h:panelGroup>
+                    <h:dataTable value="#{input.dots}" var="dot" id="table">
+                        <h:column>
+                            <f:facet name="header">X</f:facet>
+                            #{dot.x}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Y</f:facet>
+                            #{dot.y}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">R</f:facet>
+                            #{dot.r}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Result</f:facet>
+                            #{dot.result}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            #{dot.time}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Time</f:facet>
+                            #{dot.executed}
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
             </div>
         </div>
     </h:body>

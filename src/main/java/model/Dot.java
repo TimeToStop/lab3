@@ -1,16 +1,43 @@
 package model;
 
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Entity
+@Table(name = "HISTORY")
 public class Dot
 {
-    private final double x;
-    private final double y;
-    private final double r;
-    private final String time;
-    private final double time_execute;
-    private final String result;
+    @Id
+    @GeneratedValue(generator="HISTORY_ID")
+    @Column(name = "id")
+    private int id;
+    @Column (name = "x")
+    private double x;
+    @Column (name = "y")
+    private double y;
+    @Column (name = "r")
+    private double r;
+    @Column (name = "time_request")
+    private String time;
+    @Column (name = "execution_time")
+    private double executed;
+    @Column (name = "hit_result")
+    private String result;
+
+    public Dot()
+    {
+    }
+
+    public Dot(double x, double y, double r, String time, double executed, String result)
+    {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.time = time;
+        this.executed = executed;
+        this.result = result;
+    }
 
     public Dot(double x, double y, double r)
     {
@@ -21,7 +48,42 @@ public class Dot
         this.r = r;
         this.result = HitManager.isHit(x, y, r) ? "Попадает в область" : "Не попадает в область";
         this.time = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").format(new Date());
-        this.time_execute = (System.nanoTime() - start)*1e-6;
+        this.executed = (System.nanoTime() - start)*1e-6;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public void setX(double x)
+    {
+        this.x = x;
+    }
+
+    public void setY(double y)
+    {
+        this.y = y;
+    }
+
+    public void setR(double r)
+    {
+        this.r = r;
+    }
+
+    public void setTime(String time)
+    {
+        this.time = time;
+    }
+
+    public void setExecuted(double executed)
+    {
+        this.executed = executed;
+    }
+
+    public void setResult(String result)
+    {
+        this.result = result;
     }
 
     public double getX()
@@ -49,8 +111,13 @@ public class Dot
         return time;
     }
 
-    public double getTimeExecuted()
+    public double getExecuted()
     {
-        return time_execute;
+        return executed;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 }
