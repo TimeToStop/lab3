@@ -5,9 +5,7 @@ const px_mult = 60;
 const ox = w / 2;
 const oy = h / 2;
 
-document.addEventListener('DOMContentLoaded', init);
-
-function init() {
+document.addEventListener('DOMContentLoaded', function() {
     let e = document.getElementById('content-canvas');
 
     if(e) {
@@ -17,11 +15,19 @@ function init() {
         canvas.height = h;
         e.width = w;
         e.appendChild(canvas);
-        drawGrid(1);
+        dotsReset(1);
     }
+});
+
+function drawDot(ctx, dot) {
+    console.log(dot);
+    ctx.beginPath();
+    ctx.arc(ox + px_mult * dot.x, oy + px_mult * dot.y, 5, 0, 2 * Math.PI, false);
+    ctx.fillStyle = dot.hit ? 'green' : 'red';
+    ctx.fill();
 }
 
-function drawGrid(radius) {
+function drawGrid(radius, dots) {
     let ctx = document.getElementById('canvas').getContext('2d');
 
     if(ctx) {
@@ -95,6 +101,12 @@ function drawGrid(radius) {
         }
 
         ctx.fillText('0', ox + d, oy - d);
+
+        for(let dot of dots) {
+            if (Math.abs(dot.r - radius) < 1e-50) {
+                drawDot(ctx, dot);
+            }
+        }
     }
 }
 

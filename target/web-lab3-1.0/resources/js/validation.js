@@ -1,4 +1,4 @@
-function checkBoxClicked(e) {
+function checkBoxClicked(e, r) {
     let elements = document.getElementsByClassName('r-input');
 
     for(let element of elements) {
@@ -6,6 +6,7 @@ function checkBoxClicked(e) {
     }
 
     e.checked = true;
+    dotsReset(r);
 }
 
 function validation() {

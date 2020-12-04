@@ -24,28 +24,21 @@ public class Dot
     private double executed;
     @Column (name = "hit_result")
     private String result;
+    @Column (name="session_id")
+    private String session;
 
     public Dot()
     {
     }
 
-    public Dot(double x, double y, double r, String time, double executed, String result)
-    {
-        this.x = x;
-        this.y = y;
-        this.r = r;
-        this.time = time;
-        this.executed = executed;
-        this.result = result;
-    }
-
-    public Dot(double x, double y, double r)
+    public Dot(double x, double y, double r, String session)
     {
         long start = System.nanoTime();
 
         this.x = x;
         this.y = y;
         this.r = r;
+        this.session = session;
         this.result = HitManager.isHit(x, y, r) ? "Попадает в область" : "Не попадает в область";
         this.time = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").format(new Date());
         this.executed = (System.nanoTime() - start)*1e-6;
@@ -55,6 +48,8 @@ public class Dot
     {
         this.id = id;
     }
+
+    public void setSession(String session) { this.session = session; }
 
     public void setX(double x)
     {
@@ -86,6 +81,8 @@ public class Dot
         this.result = result;
     }
 
+    public String getSession() { return session; }
+
     public double getX()
     {
         return x;
@@ -105,6 +102,8 @@ public class Dot
     {
         return result;
     }
+
+    public boolean getResultAsBoolean() { return result.equals("Попадает в область");}
 
     public String getTime()
     {

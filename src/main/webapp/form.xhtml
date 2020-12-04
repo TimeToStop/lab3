@@ -10,6 +10,8 @@
         <h:outputStylesheet name="css/form-style.css"/>
         <h:outputScript name="js/grid.js"/>
         <h:outputScript name="js/validation.js"/>
+        <h:outputScript name="js/jquery.js"/>
+        <h:outputScript name="js/dots.js"/>
         <title>Lab3</title>
     </h:head>
     <h:body>
@@ -43,15 +45,15 @@
                     </div>
                     <div class="center">
                         <h:outputLabel>R:</h:outputLabel>
-                        <h:selectBooleanCheckbox value="#{input.r1}" id="r-input-1" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:selectBooleanCheckbox value="#{input.r1}" id="r-input-1" onclick="checkBoxClicked(this, 1);" checked="checked" class="r-input"/>
                         <h:outputLabel for="r-input-1">1</h:outputLabel>
-                        <h:selectBooleanCheckbox value="#{input.r15}" id="r-input-15" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:selectBooleanCheckbox value="#{input.r15}" id="r-input-15" onclick="checkBoxClicked(this, 1.5);" class="r-input"/>
                         <h:outputLabel for="r-input-15">1.5</h:outputLabel>
-                        <h:selectBooleanCheckbox value="#{input.r2}" id="r-input-2" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:selectBooleanCheckbox value="#{input.r2}" id="r-input-2" onclick="checkBoxClicked(this, 2);" class="r-input"/>
                         <h:outputLabel for="r-input-2">2</h:outputLabel>
-                        <h:selectBooleanCheckbox value="#{input.r25}" id="r-input-25" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:selectBooleanCheckbox value="#{input.r25}" id="r-input-25" onclick="checkBoxClicked(this, 2.5);" class="r-input"/>
                         <h:outputLabel for="r-input-25">2.5</h:outputLabel>
-                        <h:selectBooleanCheckbox value="#{input.r3}" id="r-input-3" onclick="checkBoxClicked(this);" class="r-input"/>
+                        <h:selectBooleanCheckbox value="#{input.r3}" id="r-input-3" onclick="checkBoxClicked(this, 3);" class="r-input"/>
                         <h:outputLabel for="r-input-3">3</h:outputLabel>
                     </div>
                     <div class="center">
@@ -97,5 +99,8 @@
             </div>
         </div>
     </h:body>
+    <script type="text/javascript">
+        dotsReset(#{input.getLastR});
+    </script>
 </f:view>
 </html>

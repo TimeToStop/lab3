@@ -4,6 +4,9 @@ import beans.Input;
 import model.Dot;
 import model.validation.*;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 public class RequestDispatcher
 {
     private final Input input;
@@ -19,13 +22,17 @@ public class RequestDispatcher
 
     public void dispatch(Request request)
     {
+        FacesContext fCtx = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fCtx.getExternalContext().getSession(false);
+
         try
         {
             double x = parserX.parse(request.getX());
             double y = parserY.parse(request.getY());
             double r = parserR.parse(request.getR());
+            String sessionId = session.getId();
 
-            input.addDot(new Dot(x, y, r));
+            input.addDot(new Dot(x, y, r, sessionId));
         }
         catch (ValidateException e)
         {
