@@ -1,5 +1,22 @@
+let current = 1;
+
+document.addEventListener('DOMContentLoaded', function () {
+    ice.ace.instance('form:y-input').onSlide = drawYValue;
+    ice.ace.instance('form:y-input').onSlideEnd = drawYValue;
+});
+
+function drawYValue() {
+    let e = document.getElementById('form:y-output');
+    if (e) {
+        let val = ice.ace.instance('form:y-input').getValue();
+        e.innerText = 'Y = ' + ((val - val % 1)/10).toString() + ':';
+    }
+}
+
 function checkBoxClicked(e, r) {
     let elements = document.getElementsByClassName('r-input');
+
+    current = r;
 
     for(let element of elements) {
         element.checked = false;

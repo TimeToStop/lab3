@@ -30,8 +30,9 @@ public class RequestDispatcher
             double x = parserX.parse(request.getX());
             double y = parserY.parse(request.getY());
             double r = parserR.parse(request.getR());
-            String sessionId = session.getId();
 
+            String sessionId = session.getId();
+            System.err.println(sessionId);
             input.addDot(new Dot(x, y, r, sessionId));
         }
         catch (ValidateException e)

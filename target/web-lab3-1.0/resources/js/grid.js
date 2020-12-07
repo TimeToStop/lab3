@@ -15,14 +15,38 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.height = h;
         e.width = w;
         e.appendChild(canvas);
+
+        canvas.addEventListener('click', imageClicked);
+
+        let e_input = document.getElementById('form:r-input-1');
+        let es = document.getElementsByClassName('r-input');
+        for(let e_inputs of es) {
+            e_inputs.checked = false;
+        }
+
+        e_input.checked = true;
         dotsReset(1);
     }
 });
 
+function toXOY(x, y) {
+    return {
+        x : (x - ox)/px_mult,
+        y :  (-y + oy)/px_mult
+    }
+}
+
+function imageClicked(e) {
+    let rect = e.target.getBoundingClientRect();
+    let x = e.x - rect.left;
+    let y = e.y - rect.top;
+    let point = toXOY(x, y);
+    imageSubmit({ x : point.x, y : point.y, r : current});
+}
+
 function drawDot(ctx, dot) {
-    console.log(dot);
     ctx.beginPath();
-    ctx.arc(ox + px_mult * dot.x, oy + px_mult * dot.y, 5, 0, 2 * Math.PI, false);
+    ctx.arc(ox + px_mult * dot.x, oy - px_mult * dot.y, 5, 0, 2 * Math.PI, false);
     ctx.fillStyle = dot.hit ? 'green' : 'red';
     ctx.fill();
 }

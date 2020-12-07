@@ -27,7 +27,13 @@
         <div>
             <div class="content">
                 <h3 id="error"></h3>
-                <h:form>
+                <h:form id="hidden">
+                    <h:inputHidden value="#{input.input_x}" id="hidden-x"/>
+                    <h:inputHidden value="#{input.input_y}" id="hidden-y"/>
+                    <h:inputHidden value="#{input.input_r}" id="hidden-r"/>
+                    <h:commandButton value="submit" action="#{input.imageSubmit}"/>
+                </h:form>
+                <h:form id="form">
                     <div class="column-holder">
                         <div class="column">
                             <p id="x-text">
@@ -37,15 +43,15 @@
                         </div>
                         <div class="column">
                             <p id="y-text">
-                                <h:outputLabel>Y:</h:outputLabel>
+                                <h:outputLabel id="y-output">Y = 0:</h:outputLabel>
                             </p>
-                            <ace:sliderEntry id="r-input" value="#{input.y}" min="-39" max="39">
+                            <ace:sliderEntry id="y-input" value="#{input.y}" min="-39" max="39">
                             </ace:sliderEntry>
                         </div>
                     </div>
                     <div class="center">
                         <h:outputLabel>R:</h:outputLabel>
-                        <h:selectBooleanCheckbox value="#{input.r1}" id="r-input-1" onclick="checkBoxClicked(this, 1);" checked="checked" class="r-input"/>
+                        <h:selectBooleanCheckbox value="#{input.r1}" id="r-input-1" onclick="checkBoxClicked(this, 1);" class="r-input"/>
                         <h:outputLabel for="r-input-1">1</h:outputLabel>
                         <h:selectBooleanCheckbox value="#{input.r15}" id="r-input-15" onclick="checkBoxClicked(this, 1.5);" class="r-input"/>
                         <h:outputLabel for="r-input-15">1.5</h:outputLabel>
@@ -57,8 +63,8 @@
                         <h:outputLabel for="r-input-3">3</h:outputLabel>
                     </div>
                     <div class="center">
-                        <h:commandButton action="#{input.submitted}" class="button" value="Отправить" type="submit"/>
-                        <h:commandButton class="button" value="Очистить" type="reset"/>
+                        <h:commandButton action="#{input.submitted}" class="button" value="Send" type="submit"/>
+                        <h:commandButton class="button" value="Clear" type="reset"/>
                     </div>
                 </h:form>
             </div>
@@ -99,8 +105,5 @@
             </div>
         </div>
     </h:body>
-    <script type="text/javascript">
-        dotsReset(#{input.getLastR});
-    </script>
 </f:view>
 </html>
