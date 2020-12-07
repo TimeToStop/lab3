@@ -68,7 +68,7 @@ public class Input implements Serializable
         this.dots = this.db.getDots();
     }
 
-    public void imageSubmit()
+    public String imageSubmit()
     {
         try
         {
@@ -80,8 +80,9 @@ public class Input implements Serializable
         }
         catch (NumberFormatException e)
         {
-
         }
+
+        return "form.xhtml?faces-redirect=true";
     }
 
     public String submitted()

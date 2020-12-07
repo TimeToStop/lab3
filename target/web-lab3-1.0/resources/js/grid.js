@@ -41,7 +41,20 @@ function imageClicked(e) {
     let x = e.x - rect.left;
     let y = e.y - rect.top;
     let point = toXOY(x, y);
-    imageSubmit({ x : point.x, y : point.y, r : current});
+
+    let input_x = document.getElementById('hidden:hidden-x');
+    let input_y = document.getElementById('hidden:hidden-y');
+    let input_r = document.getElementById('hidden:hidden-r');
+
+    let submit = document.getElementById('hidden:submit');
+
+    if (input_x && input_y && input_r && form) {
+        input_x.value = point.x;
+        input_y.value = point.y;
+        input_r.value = current;
+
+        submit.click();
+    }
 }
 
 function drawDot(ctx, dot) {

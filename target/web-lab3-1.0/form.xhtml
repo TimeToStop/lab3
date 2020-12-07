@@ -27,9 +27,14 @@
         <div>
             <div class="content">
                 <h3 id="error"></h3>
+                <h:form id="hidden">
+                    <h:inputHidden value="#{input.input_x}" id="hidden-x"/>
+                    <h:inputHidden value="#{input.input_y}" id="hidden-y"/>
+                    <h:inputHidden value="#{input.input_r}" id="hidden-r"/>
+                    <h:commandButton id="submit" style="display : none" value="submit" action="#{input.imageSubmit}"/>
+                </h:form>
                 <h:form id="form">
                     <div class="column-holder">
-                        <h:commandScript name="imageSubmit" action="#{input.imageSubmit}"/>
                         <div class="column">
                             <p id="x-text">
                                 <h:outputLabel for="x-input">X (-5, 3):</h:outputLabel>
