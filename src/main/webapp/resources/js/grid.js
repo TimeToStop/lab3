@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         e_input.checked = true;
-        dotsReset(1);
+        redraw();
     }
 });
 
@@ -35,6 +35,16 @@ function toXOY(x, y) {
         y :  (-y + oy)/px_mult
     }
 }
+
+// TODO:
+
+function fromXOY(x, y) {
+    return {
+        x : x,
+        y : y
+    }
+}
+
 
 function imageClicked(e) {
     let rect = e.target.getBoundingClientRect();
@@ -57,10 +67,34 @@ function imageClicked(e) {
     }
 }
 
+function redraw() {
+    let table = document.getElementById('table');
+    let dots = [];
+
+    if (table) {
+        for(let i = 0; i < table.rows.length; i++) {
+            let x = Number(table.rows[i].cells[0].innerHTML.trim());
+            let y = Number(table.rows[i].cells[1].innerHTML.trim());
+            let r = Number(table.rows[i].cells[2].innerHTML.trim());
+            let result = table.rows[i].cells[3].innerHTML.trim() !== 'Не попадает в область';
+
+            if (Math.abs(r - current) < 1e-10) {
+                dots.push({
+                    x : x,
+                    y : y,
+                    result : result
+                });
+            }
+        }
+    }
+
+    drawGrid(current, dots);
+}
+
 function drawDot(ctx, dot) {
     ctx.beginPath();
     ctx.arc(ox + px_mult * dot.x, oy - px_mult * dot.y, 5, 0, 2 * Math.PI, false);
-    ctx.fillStyle = dot.hit ? 'green' : 'red';
+    ctx.fillStyle = dot.result ? 'green' : 'red';
     ctx.fill();
 }
 
@@ -140,9 +174,7 @@ function drawGrid(radius, dots) {
         ctx.fillText('0', ox + d, oy - d);
 
         for(let dot of dots) {
-            if (Math.abs(dot.r - radius) < 1e-50) {
-                drawDot(ctx, dot);
-            }
+            drawDot(ctx, dot);
         }
     }
 }

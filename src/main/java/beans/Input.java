@@ -76,7 +76,7 @@ public class Input implements Serializable
             double y = Double.parseDouble(input_y);
             double r = Double.parseDouble(input_r);
 
-            dots.add(new Dot(x, y, r, ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false)).getId()));
+            addDot(new Dot(x, y, r, ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false)).getId()));
         }
         catch (NumberFormatException e)
         {
@@ -89,16 +89,6 @@ public class Input implements Serializable
     {
         dispatcher.dispatch(new Request(x, y, new Boolean[]{r1, r15, r2, r25, r3}));
         return "form.xhtml?faces-redirect=true";
-    }
-
-    public void getDotsByR() throws IOException
-    {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        ExternalContext ec = fc.getExternalContext();
-        ec.setResponseContentType("text/plain");
-        ec.setResponseCharacterEncoding("UTF-8");
-        ec.getResponseOutputWriter().write(JSON.toJson(dots));
-        fc.responseComplete();
     }
 
     public String getX()

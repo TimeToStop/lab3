@@ -23,7 +23,7 @@ function checkBoxClicked(e, r) {
     }
 
     e.checked = true;
-    dotsReset(r);
+    redraw();
 }
 
 function validation() {

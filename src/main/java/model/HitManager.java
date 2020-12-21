@@ -8,7 +8,7 @@ public class HitManager
 
         if(x >= 0 && y <= 0)
         {
-            success = (x <= r && y >= r/2);
+            success = (x <= r && y >= -r/2);
         }
         else if (x <= 0 && y <= 0)
         {
