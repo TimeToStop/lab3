@@ -11,7 +11,6 @@
         <h:outputScript name="js/grid.js"/>
         <h:outputScript name="js/validation.js"/>
         <h:outputScript name="js/jquery.js"/>
-        <h:outputScript name="js/dots.js"/>
         <title>Lab3</title>
     </h:head>
     <h:body>
@@ -26,7 +25,7 @@
         </div>
         <div>
             <div class="content">
-                <h3 id="error"></h3>
+                <h3 id="error">#{input.error}</h3>
                 <h:form id="hidden">
                     <h:inputHidden value="#{input.input_x}" id="hidden-x"/>
                     <h:inputHidden value="#{input.input_y}" id="hidden-y"/>
@@ -45,6 +44,7 @@
                             <p id="y-text">
                                 <h:outputLabel id="y-output">Y = 0:</h:outputLabel>
                             </p>
+                            <h:inputHidden id="y-hidden-f" value="#{input.yhidden}"/>
                             <ace:sliderEntry id="y-input" value="#{input.y}" min="-39" max="39">
                             </ace:sliderEntry>
                         </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="center">
                         <h:commandButton action="#{input.submitted}" class="button" value="Send" type="submit"/>
-                        <h:commandButton class="button" value="Clear" type="reset"/>
+                        <h:commandButton action="#{input.clear}" class="button" value="Clear"/>
                     </div>
                 </h:form>
             </div>
@@ -72,7 +72,7 @@
 
         <div>
             <div class="content">
-                <h:panelGroup>
+                <h:panelGroup rendered="#{input.dots.size() != 0}">
                     <h:dataTable value="#{input.dots}" var="dot" id="table">
                         <h:column>
                             <f:facet name="header">X</f:facet>

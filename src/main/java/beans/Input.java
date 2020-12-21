@@ -1,19 +1,14 @@
 package beans;
 
 import model.Dot;
-import model.JSON;
-import org.icefaces.apache.commons.fileupload.RequestContext;
-import org.primefaces.PrimeFaces;
 import sql.OracleDB;
 import web.Request;
 import web.RequestDispatcher;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedList;
 
@@ -25,37 +20,15 @@ public class Input implements Serializable
     private final OracleDB db;
     private final LinkedList<Dot> dots;
 
+    private String error;
     private String x;
     private Integer y;
+    private String yhidden = "0.0";
     private boolean r1;
     private boolean r15;
     private boolean r2;
     private boolean r25;
     private boolean r3;
-
-    public String getInput_x() {
-        return input_x;
-    }
-
-    public void setInput_x(String input_x) {
-        this.input_x = input_x;
-    }
-
-    public String getInput_y() {
-        return input_y;
-    }
-
-    public void setInput_y(String input_y) {
-        this.input_y = input_y;
-    }
-
-    public String getInput_r() {
-        return input_r;
-    }
-
-    public void setInput_r(String input_r) {
-        this.input_r = input_r;
-    }
 
     private String input_x;
     private String input_y;
@@ -87,7 +60,15 @@ public class Input implements Serializable
 
     public String submitted()
     {
-        dispatcher.dispatch(new Request(x, y, new Boolean[]{r1, r15, r2, r25, r3}));
+        try
+        {
+            dispatcher.dispatch(new Request(x, (int)Double.parseDouble(yhidden), new Boolean[]{r1, r15, r2, r25, r3}));
+            yhidden = "0.0";
+        }
+        catch (Exception e)
+        {
+        }
+
         return "form.xhtml?faces-redirect=true";
     }
 
@@ -164,6 +145,54 @@ public class Input implements Serializable
     public LinkedList<Dot> getDots()
     {
         return this.dots;
+    }
+
+
+    public void setYhidden(String v) {
+        this.yhidden = v;
+    }
+
+    public String getYhidden() {
+        return yhidden;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public String getError() {
+        return this.error == null ? "" : this.error;
+    }
+
+    public String getInput_x() {
+        return input_x;
+    }
+
+    public void setInput_x(String input_x) {
+        this.input_x = input_x;
+    }
+
+    public String getInput_y() {
+        return input_y;
+    }
+
+    public void setInput_y(String input_y) {
+        this.input_y = input_y;
+    }
+
+    public String getInput_r() {
+        return input_r;
+    }
+
+    public void setInput_r(String input_r) {
+        this.input_r = input_r;
+    }
+
+    public String clear()
+    {
+        this.db.clear();
+        this.dots.clear();
+        return "form.xhtml?faces-redirect=true";
     }
 
     public void addDot(Dot dot)

@@ -37,7 +37,6 @@ function toXOY(x, y) {
 }
 
 // TODO:
-
 function fromXOY(x, y) {
     return {
         x : x,

@@ -22,22 +22,21 @@ public class RequestDispatcher
 
     public void dispatch(Request request)
     {
-        FacesContext fCtx = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) fCtx.getExternalContext().getSession(false);
-
         try
         {
+            FacesContext fCtx = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) fCtx.getExternalContext().getSession(false);
+
             double x = parserX.parse(request.getX());
             double y = parserY.parse(request.getY());
             double r = parserR.parse(request.getR());
 
             String sessionId = session.getId();
-            System.err.println(sessionId);
             input.addDot(new Dot(x, y, r, sessionId));
         }
         catch (ValidateException e)
         {
-            // Error:
+            input.setError(e.getMessage());
         }
     }
 }

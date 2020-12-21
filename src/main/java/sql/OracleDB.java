@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +19,15 @@ public class OracleDB
     public OracleDB()
     {
         this.factory = new Configuration().configure().buildSessionFactory();
+    }
+
+    public void clear()
+    {
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.createQuery("DELETE FROM " + Dot.class.getSimpleName()).executeUpdate();
+        transaction.commit();
+        session.close();
     }
 
     public void addDot(Dot dot)

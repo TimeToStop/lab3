@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function drawYValue() {
     let e = document.getElementById('form:y-output');
-    if (e) {
+    let e_hidden = document.getElementById('form:y-hidden-f');
+    if (e && e_hidden) {
         let val = ice.ace.instance('form:y-input').getValue();
         e.innerText = 'Y = ' + ((val - val % 1)/10).toString() + ':';
+        e_hidden.value = val.toString();
     }
 }
 
