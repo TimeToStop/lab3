@@ -7,6 +7,10 @@
     font-family: 'main-font';
 }
 
+body {
+    background-color: #f8f6f6;
+}
+
 .head-label {
     margin: 0px;
     color: #696969;

@@ -1,6 +1,6 @@
-const w = 500;
-const h = 500;
-const px_mult = 60;
+const w = 530;
+const h = 530;
+const px_mult = 48;
 
 const ox = w / 2;
 const oy = h / 2;
@@ -139,13 +139,13 @@ function drawGrid(radius, dots) {
         const d = 5;
 
         // Horizontal digits
-        for(let i = -3.5; i <= 3.6; i += 0.5) {
+        for(let i = -5.0; i <= 5.1; i += 0.5) {
             if(i * i > 0.1) {
                 ctx.fillText(i.toString(), ox + i * px_mult - d, oy - d);
             }
         }
 
-        for(let i = -3.5; i <= 3.6; i += 0.25) {
+        for(let i = -5.0; i <= 5.1; i += 0.25) {
             if(i * i > 0.01) {
                 ctx.beginPath();
                 ctx.moveTo(ox + i * px_mult , oy - d / 2);
@@ -155,13 +155,13 @@ function drawGrid(radius, dots) {
         }
 
         // Vertical digits
-        for(let i = -3.5; i <= 3.6; i += 0.5) {
+        for(let i = -5.0; i <= 5.1; i += 0.5) {
             if(i * i > 0.1) {
                 ctx.fillText((-i).toString(), ox + d, oy + i * px_mult);
             }
         }
 
-        for(let i = -3.5; i <= 3.6; i += 0.25) {
+        for(let i = -5.0; i <= 5.1; i += 0.25) {
             if(i * i > 0.01) {
                 ctx.beginPath();
                 ctx.moveTo(ox - d/2, oy + i * px_mult);

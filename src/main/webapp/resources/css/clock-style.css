@@ -1,5 +1,5 @@
 .main-wrapper {
-    background: white;
+    background-color: #f8f6f6;
 }
 
 .wrapper {
@@ -9,7 +9,7 @@
     width: 450px;
     margin: 0 auto;
     height: 450px;
-    background: white;
+    background: #f8f6f6;
 }
 
 .clock {
